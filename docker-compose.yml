@@ -1,0 +1,40 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: smartrujuk_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+       - mysql_data:/var/lib/mysql
+       - ./docker/mysql-init:/docker-entrypoint-initdb.d
+    # ports:
+    #   - "3306:3306"   ## optional: supaya bisa diakses dari host (mis. DBeaver). Kalau tidak perlu, hapus.
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build: .
+    container_name: smartrujuk_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+    ports:
+      - "8501:8501"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Kalau mau live edit tanpa rebuild, uncomment ini:
+    # volumes:
+    #   - ./:/app
+
+volumes:
+  mysql_data:

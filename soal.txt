@@ -1,0 +1,1521 @@
+
+buat codebase ini sebuah program dimana model dengan pyhton, db local dengan MySQL dan web dengan streamlit terintegrasi dengan gmaps api :
+
+
+
+Product Requirements Document (PRD) Sederhana: SmartRujuk+ AI Agent
+1. Latar Belakang & Masalah
+Proses merujuk pasien JKN/BPJS dari Faskes Tingkat I (seperti Puskesmas) ke Rumah Sakit (RS) seringkali lambat dan tidak efisien. Dokter atau petugas kesulitan menentukan RS rujukan yang paling optimal karena informasi mengenai jarak, waktu tempuh, ketersediaan tempat tidur (kapasitas), dan potensi waktu tunggu tidak tersedia secara real-time. Hal ini menyebabkan penumpukan pasien di beberapa RS sementara RS lain masih memiliki kapasitas, serta memperpanjang waktu tunggu pasien untuk mendapatkan penanganan.
+
+2. Solusi: SmartRujuk+ AI Agent
+SmartRujuk+ adalah sebuah sistem cerdas (AI Agent) yang bertujuan untuk mengotomatisasi dan mengoptimalkan proses rujukan pasien. Sistem ini akan memberikan rekomendasi RS tujuan terbaik berdasarkan beberapa faktor kunci secara bersamaan.
+
+3. Tujuan Utama
+Mempercepat Proses Rujukan: Mengurangi waktu yang dibutuhkan dari keputusan merujuk hingga pasien tiba di RS tujuan.
+
+Meningkatkan Kepuasan Pasien: Memberikan kepastian dan mengurangi waktu tunggu yang tidak perlu.
+
+Mengoptimalkan Utilisasi RS: Meratakan distribusi pasien rujukan sesuai kapasitas RS yang tersedia.
+
+Meningkatkan Efisiensi Faskes: Memudahkan pekerjaan petugas dalam menentukan tujuan rujukan.
+
+4. Fitur-fitur Kunci
+Rekomendasi RS Cerdas Berbasis Lokasi
+
+Menggunakan Google Maps API untuk menghitung jarak dan estimasi waktu tempuh dari lokasi faskes saat ini ke beberapa RS di sekitarnya.
+
+Analisis Kapasitas & Prediksi Waktu Tunggu
+
+Menganalisis data historis dan dataset rasio tempat tidur untuk memprediksi tingkat hunian sebuah RS.
+
+Mengembangkan model prediktif sederhana untuk memperkirakan waktu tunggu di unit gawat darurat atau poliklinik tertentu.
+
+Integrasi dengan SATUSEHAT
+
+Menggunakan API SATUSEHAT untuk mengambil data faskes yang relevan.
+
+Mengotomatisasi pengiriman data rujukan awal ke RS tujuan melalui platform SATUSEHAT setelah rekomendasi dipilih.
+
+Dasbor Sederhana
+
+Menampilkan peta dengan lokasi faskes dan rekomendasi RS.
+
+Menampilkan daftar RS yang direkomendasikan, diurutkan berdasarkan skor optimal (kombinasi jarak, waktu tempuh, dan kapasitas).
+
+5. Sumber Data & Teknologi
+Platform & API:
+
+SATUSEHAT: Untuk data faskes dan proses rujukan.
+
+Google Maps API: Untuk geolokasi, jarak, dan waktu tempuh.
+
+Dataset:
+
+List Faskes BPJS Indonesia (Kaggle): Sebagai data awal daftar faskes.
+
+Dataset Rasio Bed-to-Population (Kaggle): Untuk analisis awal kapasitas RS.
+
+Teknologi Utama:
+
+LangChain Agents: Untuk membangun logika AI yang dapat berinteraksi dengan berbagai API dan sumber data.
+
+Predictive Modeling: (Contoh: Regresi, Time Series) untuk memprediksi waktu tunggu.
+
+Bahasa Pemrograman: Python.
+
+
+dataset :
+- https://satusehat.kemkes.go.id/platform/docs/id/postman-workshop/forking/
+- https://www.kaggle.com/datasets/israhabibi/list-faskes-bpjs-indonesia
+
+Skip to
+content
+Kaggle
+
+Create
+Home
+
+Competitions
+
+Datasets
+
+Models
+
+Benchmarks
+
+Code
+
+Discussions
+
+Learn
+
+More
+
+
+View Active Events
+
+Search
+
+
+Sign In
+
+Register
+Kaggle uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic.
+Learn more
+OK, Got it.
+Isra Nurul Habibi · Updated 6 years ago
+List Faskes BPJS Indonesia
+Daftar Nama Klinik, Puskesmas, Rumah Sakit yang bekerja sama dengan BPJS
+
+List Faskes BPJS Indonesia
+
+Code
+
+Download
+About Dataset
+Context
+Data dikumpulkan untuk di visualisasikan lebih lanjut.
+
+Content
+Dataset berupa list fasilitas kesehatan yang bekerja sama dengan bpjs. Data mencakup seluruh Indonesia.
+
+Acknowledgements
+Data ini didapat dengan proses web scrapping dari situs lovia.life (https://lovia.life/en/fit/bpjs). Tanpa adanya data dari situs tersebut, dataset ini tidak akan pernah bisa terwujud.
+
+Inspiration
+Dari dataset ini diharapkan bisa di gabung dengan dataset lainnya untk kepentingan healthcare Indonesia.
+
+Usability
+10.00
+
+License
+Other (specified in description)
+
+
+Expected update frequency
+Never
+
+Tags
+Religion and Belief Systems
+Healthcare
+Data Faskes BPJS 2019.csv(9.28 MB)
+
+10 of 11 columns
+
+About this file
+Flat file list faskes BPJS Indonesia 2019
+
+
+NoLink
+No
+
+
+Provinsi
+Provinsi Faskes
+
+
+KotaKab
+Kota/Kabupaten lokasi Faskes
+
+
+Link
+Link asli data
+
+
+TipeFaskes
+Tipe Faskes
+
+
+No
+Nomor data
+
+
+KodeFaskes
+Kode Unik Faskes
+
+
+NamaFaskes
+Nama Lengkap Faskes
+
+
+LatLongFaskes
+Link google map lokasi faskes
+
+
+AlamatFaskes
+Alamat Faskes
+
+Label	Count
+0.00 - 25.65	874
+25.65 - 51.30	1,408
+51.30 - 76.95	938
+76.95 - 102.60	1,347
+102.60 - 128.25	1,333
+128.25 - 153.90	1,810
+153.90 - 179.55	3,617
+179.55 - 205.20	2,723
+205.20 - 230.85	2,605
+230.85 - 256.50	2,410
+256.50 - 282.15	2,060
+282.15 - 307.80	811
+307.80 - 333.45	851
+333.45 - 359.10	1,454
+359.10 - 384.75	820
+384.75 - 410.40	1,202
+410.40 - 436.05	780
+436.05 - 461.70	780
+461.70 - 487.35	552
+487.35 - 513.00	782
+0
+513
+Jawa Tengah
+13%
+Jawa Barat
+13%
+Other (21786)
+75%
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Surabaya
+1%
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Semarang
+1%
+Other (28488)
+98%
+https://lovia.life/id/health/bpjs/area/kota-surabaya
+1%
+https://lovia.life/id/health/bpjs/area/kota-semarang
+1%
+Other (28488)
+98%
+Puskesmas
+34%
+Klinik Pratama
+23%
+Other (12647)
+43%
+1
+9%
+2
+8%
+Other (24163)
+83%
+-
+3%
+0001R001
+0%
+Other (28320)
+97%
+-
+3%
+Klinik Mitra Sehat
+0%
+Other (28310)
+97%
+-
+19%
+http://maps.google.co.id/?q=0.0,0.0
+0%
+Other (23734)
+81%
+-
+3%
+Jl. Trans Sulawesi
+0%
+Other (28275)
+97%
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Rumah Sakit
+1
+0001R001
+RSU Cut Nyak Dhien
+http://maps.google.co.id/?q=4.488058,97.947963
+Jl. Tm Bahrum No. 1 Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Rumah Sakit
+2
+0001R004
+RSU Cut Meutia Langsa
+http://maps.google.co.id/?q=4.488088,97.947781
+Jl.Garuda Kebun Baru Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Rumah Sakit
+3
+0105R001
+RSUD Langsa
+http://maps.google.co.id/?q=4.472208,97.975533
+Jln.A.Yani No. 1 Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Rumah Sakit
+4
+0105R013
+RSU Ummi
+http://maps.google.co.id/?q=4.470376,97.991915
+Jln. Prof. A. Madjid Ibrahim
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Puskesmas
+1
+00010001
+Langsa Lama
+http://maps.google.co.id/?q=4.478172,97.949988
+Gampong Meurandeh Dayah
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Puskesmas
+2
+00010801
+Langsa Baro
+http://maps.google.co.id/?q=4.474268,97.957391
+Jl. Lilawangsa Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Puskesmas
+3
+00010802
+Langsa Barat
+http://maps.google.co.id/?q=4.471487,97.989911
+Jl.Prof.A. Madjid Ibrahim
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Puskesmas
+4
+00010803
+Langsa Kota
+http://maps.google.co.id/?q=4.471071,97.974053
+Jl. H.Agussalim No.10
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Puskesmas
+5
+00011801
+Langsa Timur
+http://maps.google.co.id/?q=4.434317,98.017183
+Medan-Banda Aceh Km 7
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Dokter Praktik Perorangan
+-
+-
+-
+-
+-
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Dokter Gigi
+-
+-
+-
+-
+-
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Utama
+1
+0001U011
+dr. Hj. Sri Hariaty
+http://maps.google.co.id/?q=4.468557,97.962106
+Jalan Panglima Polem No 64
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Utama
+2
+0001U013
+dr. Herman. I
+http://maps.google.co.id/?q=4.522193,97.9386
+Medan-Banda Aceh, Dusun Makmur
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Utama
+3
+0001U014
+dr. MUHAMMAD YUSUF AKBAR
+http://maps.google.co.id/?q=4.414045,98.025924
+Medan - Banda Aceh Km 10
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Utama
+4
+0001U015
+Dr. Redha Dian Akbar
+-
+Lillawangsa, Gedubang Aceh
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Utama
+5
+0001U016
+Dr. Hj. Dahniar, M.Kes
+-
+Jl. Rel No. 9
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+1
+00010002
+Polkes Im.09.02 Langsa
+http://maps.google.co.id/?q=4.466214,97.983966
+Jl. Cut Nyak Dien No. 21A
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+2
+00010003
+Poliklinik Polres Langsa
+http://maps.google.co.id/?q=4.463615,97.984589
+Jl. Cut Nyak Dhien No. 5
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+3
+0001B003
+BP Bina Husada
+http://maps.google.co.id/?q=4.471103,97.964406
+Jln. Pertanian Dusun Bahagia
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+4
+0001B004
+Bp Dr. Syarbaini, Mkes
+http://maps.google.co.id/?q=4.47479,97.96112
+Jln. A. Yani No. 154 B
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+5
+0001B005
+Klinik Dokter Chik
+http://maps.google.co.id/?q=4.62782,97.980222
+Jalan Medan Banda Aceh
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+6
+0001B006
+Bp Kita
+http://maps.google.co.id/?q=4.457848,97.971393
+Jalan Mesjid No 8
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+7
+0001B009
+Klinik Sahabat
+http://maps.google.co.id/?q=4.4803356,97.9743895
+Jln. Jendral Sudirman No. 4A
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+8
+0001B010
+Klinik Ummi
+http://maps.google.co.id/?q=4.473357,97.968972
+Jalan Sudirman No.12
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+9
+0001B011
+Klinik Cut Meutia
+http://maps.google.co.id/?q=4.448084,97.964212
+Jl. Kebun Baru
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+10
+0001B012
+Klinik Aa Sehat
+http://maps.google.co.id/?q=4.477337,97.971897
+Jendral Sudirman, Dsn I
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+11
+0001B013
+Klinik Keluarga
+http://maps.google.co.id/?q=4.47568097,97.968141
+Jln. Syiah Kuala, No. 64
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+12
+0001B014
+BP dr. Syarifah Rina M, M.Kes
+http://maps.google.co.id/?q=4.466246,97.986681
+Jl. Agussalim, No. 20
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Klinik Pratama
+13
+0001U003
+Klinik Ramala
+http://maps.google.co.id/?q=4.465487,97.977981
+Jl. Lilawangsa No. 5 Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Apotek
+1
+0001A001
+Apotek Anggrek
+http://maps.google.co.id/?q=4.469871,97.970558
+Jl. A Yani No.13 Langsa
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Apotek
+2
+0001A003
+Apotek Kimia Farma
+-
+Jl. TM Zein No. 1 E
+0
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kota Langsa
+https://lovia.life/id/health/bpjs/area/kota-langsa
+Apotek
+3
+0001A004
+IFRS Rsud Langsa
+-
+Jln. A Yani
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Rumah Sakit
+1
+0002R001
+RSUD Gayo Lues
+http://maps.google.co.id/?q=4.0056845,97.3679242
+Jl. Pangur-Sangir
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+1
+00020602
+Pintu Rime Uring
+http://maps.google.co.id/?q=4.059445,97.463333
+Pintu Rime
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+2
+00020902
+Rerebe
+http://maps.google.co.id/?q=4.005921,97.363502
+Dusun Ume Paya
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+3
+00020903
+Da Bu Glang
+http://maps.google.co.id/?q=4.058334,97.356553
+Tetukah
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+4
+00021003
+Blang Jerango
+http://maps.google.co.id/?q=4.016129,97.26588
+Gumpang
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+5
+00021101
+Cinta Maju
+http://maps.google.co.id/?q=3.973862,97.316162
+Desa Umelah Kec. Blangpegayon
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+6
+00021102
+Gumpang
+-
+Jl.Blangkejren-Kutacane Km 42
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+7
+01130601
+Blang Kejeren Galus
+http://maps.google.co.id/?q=3.996378,97.33819
+Jl.Blangkejeren-Kutapanjang
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+8
+01130603
+Pinding
+http://maps.google.co.id/?q=3.895791,97.678041
+Pinding
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+9
+01130701
+Kuta Panjang
+http://maps.google.co.id/?q=4.018231,97.279522
+Jl.H.Djaka No -
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+10
+01130801
+Rikit Gaib
+http://maps.google.co.id/?q=4.104433,97.255153
+Jl. Blangkejeren-Takengon Km.2
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+11
+01130802
+Kenyaren
+http://maps.google.co.id/?q=4.213911,97.17589
+Jl. Blangkejeren-Takengon Km.3
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Puskesmas
+12
+01130901
+Terangon
+http://maps.google.co.id/?q=4.07936,97.06615
+Terangon
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Dokter Praktik Perorangan
+1
+0002S001
+Klinik Utama Tanoh Gayo
+http://maps.google.co.id/?q=3.98614031,97.34443434
+Jl. Besar Kuta Cane No 69
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Dokter Gigi
+1
+0002G001
+Dpp Drg. Mariani Hasnah
+-
+Kampung Raklunung
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Klinik Utama
+1
+0002U001
+dr. Eka Puspita Sari
+http://maps.google.co.id/?q=3.997087,97.341683
+Jl.Kutalintang No.162
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Klinik Utama
+2
+0002U003
+dr. Junaidi
+http://maps.google.co.id/?q=4.016536,97.277477
+Jalan Terangun Blangkejeren No
+1
+Nanggroe Aceh Darussalam
+Kode Faskes dan Alamat Rumah Sakit BPJS di Kab. Gayo Lues
+https://lovia.life/id/health/bpjs/area/kab-gayo-lues
+Klinik Utama
+3
+0002U004
+dr. Andy Saputra
+http://maps.google.co.id/?q=4.016536,97.277477
+Jln. Pining
+Data Explorer
+Version 1 (9.28 MB)
+
+Data Faskes BPJS 2019.csv
+
+Summary
+1 file
+
+11 columns
+
+See what others are saying about this dataset
+What have you used this dataset for?
+
+Learning 0
+
+Research 0
+
+Application 0
+
+LLM Fine-Tuning 0
+How would you describe this dataset?
+
+Well-documented 0
+
+Well-maintained 0
+
+Clean data 0
+
+Original 0
+
+High-quality notebooks 0
+
+Other
+Metadata
+
+Expand All
+Collaborators
+Authors
+Coverage
+DOI Citation
+Provenance
+License
+Expected Update Frequency
+Activity Overview
+Views
+27K
+date	Views
+Sep 11, 2025	5
+Sep 12, 2025	4
+Sep 13, 2025	5
+Sep 14, 2025	5
+Sep 15, 2025	14
+Sep 16, 2025	5
+Sep 17, 2025	7
+Sep 18, 2025	7
+Sep 19, 2025	4
+Sep 20, 2025	9
+Sep 21, 2025	1
+Sep 22, 2025	9
+Sep 23, 2025	10
+Sep 24, 2025	19
+Sep 25, 2025	15
+Sep 26, 2025	10
+Sep 27, 2025	13
+Sep 28, 2025	11
+Sep 29, 2025	15
+Sep 30, 2025	27
+Oct 1, 2025	10
+Oct 2, 2025	11
+Oct 3, 2025	6
+Oct 4, 2025	8
+Oct 5, 2025	13
+Oct 6, 2025	15
+Oct 7, 2025	12
+Oct 8, 2025	10
+Oct 9, 2025	13
+date	Views
+Sep 11, 2025	5
+Sep 12, 2025	4
+Sep 13, 2025	5
+Sep 14, 2025	5
+Sep 15, 2025	14
+Sep 16, 2025	5
+Sep 17, 2025	7
+Sep 18, 2025	7
+Sep 19, 2025	4
+Sep 20, 2025	9
+Sep 21, 2025	1
+Sep 22, 2025	9
+Sep 23, 2025	10
+Sep 24, 2025	19
+Sep 25, 2025	15
+Sep 26, 2025	10
+Sep 27, 2025	13
+Sep 28, 2025	11
+Sep 29, 2025	15
+Sep 30, 2025	27
+Oct 1, 2025	10
+Oct 2, 2025	11
+Oct 3, 2025	6
+Oct 4, 2025	8
+Oct 5, 2025	13
+Oct 6, 2025	15
+Oct 7, 2025	12
+Oct 8, 2025	10
+Oct 9, 2025	13
+293
+in the last 30 days
+Downloads
+4614
+date	Downloads
+Sep 11, 2025	1
+Sep 13, 2025	2
+Sep 14, 2025	1
+Sep 15, 2025	4
+Sep 18, 2025	2
+Sep 20, 2025	1
+Sep 23, 2025	3
+Sep 24, 2025	3
+Sep 25, 2025	6
+Sep 26, 2025	1
+Sep 27, 2025	4
+Sep 28, 2025	4
+Sep 29, 2025	2
+Sep 30, 2025	8
+Oct 1, 2025	4
+Oct 2, 2025	3
+Oct 4, 2025	1
+Oct 5, 2025	1
+Oct 6, 2025	2
+Oct 7, 2025	6
+Oct 9, 2025	3
+date	Downloads
+Sep 11, 2025	1
+Sep 13, 2025	2
+Sep 14, 2025	1
+Sep 15, 2025	4
+Sep 18, 2025	2
+Sep 20, 2025	1
+Sep 23, 2025	3
+Sep 24, 2025	3
+Sep 25, 2025	6
+Sep 26, 2025	1
+Sep 27, 2025	4
+Sep 28, 2025	4
+Sep 29, 2025	2
+Sep 30, 2025	8
+Oct 1, 2025	4
+Oct 2, 2025	3
+Oct 4, 2025	1
+Oct 5, 2025	1
+Oct 6, 2025	2
+Oct 7, 2025	6
+Oct 9, 2025	3
+62
+in the last 30 days
+Engagement
+0.17075
+downloads per view
+Comments
+0
+posted
+Top Contributors
+Detail View
+Views
+[object Object]
+09/15
+09/22
+09/29
+10/06
+0
+10
+20
+30
+date	Views
+Sep 11, 2025	5
+Sep 12, 2025	4
+Sep 13, 2025	5
+Sep 14, 2025	5
+Sep 15, 2025	14
+Sep 16, 2025	5
+Sep 17, 2025	7
+Sep 18, 2025	7
+Sep 19, 2025	4
+Sep 20, 2025	9
+Sep 21, 2025	1
+Sep 22, 2025	9
+Sep 23, 2025	10
+Sep 24, 2025	19
+Sep 25, 2025	15
+Sep 26, 2025	10
+Sep 27, 2025	13
+Sep 28, 2025	11
+Sep 29, 2025	15
+Sep 30, 2025	27
+Oct 1, 2025	10
+Oct 2, 2025	11
+Oct 3, 2025	6
+Oct 4, 2025	8
+Oct 5, 2025	13
+Oct 6, 2025	15
+Oct 7, 2025	12
+Oct 8, 2025	10
+Oct 9, 2025	13
+date	Views
+Sep 11, 2025	5
+Sep 12, 2025	4
+Sep 13, 2025	5
+Sep 14, 2025	5
+Sep 15, 2025	14
+Sep 16, 2025	5
+Sep 17, 2025	7
+Sep 18, 2025	7
+Sep 19, 2025	4
+Sep 20, 2025	9
+Sep 21, 2025	1
+Sep 22, 2025	9
+Sep 23, 2025	10
+Sep 24, 2025	19
+Sep 25, 2025	15
+Sep 26, 2025	10
+Sep 27, 2025	13
+Sep 28, 2025	11
+Sep 29, 2025	15
+Sep 30, 2025	27
+Oct 1, 2025	10
+Oct 2, 2025	11
+Oct 3, 2025	6
+Oct 4, 2025	8
+Oct 5, 2025	13
+Oct 6, 2025	15
+Oct 7, 2025	12
+Oct 8, 2025	10
+Oct 9, 2025	13
+Downloads
+[object Object]
+09/15
+09/22
+09/29
+10/06
+0
+5
+10
+date	Downloads
+Sep 11, 2025	1
+Sep 13, 2025	2
+Sep 14, 2025	1
+Sep 15, 2025	4
+Sep 18, 2025	2
+Sep 20, 2025	1
+Sep 23, 2025	3
+Sep 24, 2025	3
+Sep 25, 2025	6
+Sep 26, 2025	1
+Sep 27, 2025	4
+Sep 28, 2025	4
+Sep 29, 2025	2
+Sep 30, 2025	8
+Oct 1, 2025	4
+Oct 2, 2025	3
+Oct 4, 2025	1
+Oct 5, 2025	1
+Oct 6, 2025	2
+Oct 7, 2025	6
+Oct 9, 2025	3
+date	Downloads
+Sep 11, 2025	1
+Sep 13, 2025	2
+Sep 14, 2025	1
+Sep 15, 2025	4
+Sep 18, 2025	2
+Sep 20, 2025	1
+Sep 23, 2025	3
+Sep 24, 2025	3
+Sep 25, 2025	6
+Sep 26, 2025	1
+Sep 27, 2025	4
+Sep 28, 2025	4
+Sep 29, 2025	2
+Sep 30, 2025	8
+Oct 1, 2025	4
+Oct 2, 2025	3
+Oct 4, 2025	1
+Oct 5, 2025	1
+Oct 6, 2025	2
+Oct 7, 2025	6
+Oct 9, 2025	3
+Related Notebooks
+
+See all
+
+Simple Geographical Visualization
+Updated 6 years ago
+List Faskes BPJS Indonesia
+32
+
+Data Faskes BPJS Vs Populasi 2010
+Updated 6 years ago
+List Faskes BPJS Indonesia+1
+20
+
+Cleaning Data
+Updated 6 years ago
+List Faskes BPJS Indonesia
+10
+Similar Datasets
+
+Causes of Death in Indonesia
+Hendratno · Updated 3 years ago
+Usability 10.0 · 22 kB · 13.3K downloads
+2 Files (CSV)
+150
+
+Dataset Rasio Bed to Population Faskes II
+Yafeth T.B · Updated 4 years ago
+Usability 8.8 · 59 kB · 1,191 downloads
+3 Files (CSV, other)
+23
+
+Riyadh Hospitals and Clinics (719)
+Meshal Alsanari · Updated 7 months ago
+Usability 7.6 · 46 kB · 45 downloads
+1 File (other)
+1
+
+Ghana Health Facilities
+citizen datascience ghana · Updated 7 years ago
+Usability 8.8 · 86 kB · 4,454 downloads
+2 Files (CSV)
+88
+
+
+
+
+- https://www.kaggle.com/datasets/yafethtb/dataset-rasio-bed-to-population-faskes-ii
+
+Skip to
+content
+Kaggle
+
+Create
+Home
+
+Competitions
+
+Datasets
+
+Models
+
+Benchmarks
+
+Code
+
+Discussions
+
+Learn
+
+More
+
+
+View Active Events
+
+Search
+
+
+Sign In
+
+Register
+Kaggle uses cookies from Google to deliver and enhance the quality of its services and to analyze traffic.
+Learn more
+OK, Got it.
+Yafeth T.B · Updated 4 years ago
+Dataset Rasio Bed to Population Faskes II
+Dataset rasio untuk rumah sakit umum kelas C dan D se-Indonesia per tahun 2020
+
+Dataset Rasio Bed to Population Faskes II
+
+Code
+
+Download
+About Dataset
+Selayang Pandang
+Pelayanan kesehatan Indonesia mengenal sistem rujukan berjangka pasien yang didasarkan pada kebutuhan perawatan pasien dan disesuaikan dengan tingkat kemampuan melayani dari fasilitas kesehatan yang ada. Fasilitas kesehatan dibagi menjadi tiga:
+
+Faskes tingkat I, yaitu klinik atau Puskesmas. Umumnya menangani permasalahan klinis biasa yang cukup diatasi dengan berobat jalan. Dokter yang melayani umumnya adalah dokter umum.
+Faskes tingkat II, yaitu rumah sakit kelas D, C, dan B. Faskes ini menangani pasien yang membutuhkan pelayanan lebih spesifik yang fasilitasnya tidak tersedia di klinik atau Puskesmas. Dokter yang melayani umumnya sudah memiliki spesialisasi. Apabila pasien tidak bisa ditangani oleh rumah sakit kelas C dan D, pasien akan dirujuk ke rumah sakit kelas B.
+Faskes tingkat III, yaitu rumah sakit kelas A. Faskes ini melayani pasien yang membutuhkan pelayanan yang sangat spesifik dengan fasilitas yang lebih lengkap. Dokter yang melayani umumnya telah memiliki spesialisasi yang lebih spesifik menangani suatu bagian tubuh atau penyakit.
+Sistem pelayanan bertingkat ini mengoptimalkan penggunaan sumber daya faskes. Pasien dengan penyakit yang tidak begitu serius, seperti misalnya diare, tidak perlu ke rumah sakit kelas A yang seharusnya menangani pasien dengan keluhan lebih serius, seperti misalnya kanker usus. Demikian pula pasien yang membutuhkan rawat inap, apabila penanganan penyakitnya bisa dilakukan di rumah sakit rujukan pertama, pasien tidak perlu dirujuk ke faskes tingkat III. Dengan begitu tempat tidur yang bisa digunakan untuk pasien yang membutuhkan penanganan serius bisa dialokasikan dengan semestinya. Dan berbicara soal tempat tidur, kita tidak bisa lepas dari istilah bed to population ratio
+
+Bed to population ratio adalah ukuran yang dikeluarkan oleh WHO untuk menghitung ketersediaan tempat tidur per 1000 jiwa jumlah penduduk. Selama ini jika membicarakan soal rasio *bed to population *Indonesia, perhatian kita selalu ke keseluruhan tempat tidur di rumah sakit se-Indonesia. Sangat jarang, bahkan mungkin tidak pernah disinggung mengenai rasio *bed to population * dari fasilitas rujukan pertama. Padahal merekalah garda terdepan penanganan rujukan pasien. Apabila faskes tingkat II kewalahan menangani pasien, mereka akan terpaksa merujuk pasien ke faskes yang lebih tinggi. Dan itu pada akhirnya akan mengurangi sumber daya yang seharusnya dialokasikan ke pasien dengan kasus yang lebih serius.
+
+Dataset ini kami susun untuk melihat seberapa besar rasio *bed to population * garda pertama penanganan rujukan pasien di Indonesia. Kami beranggapan jika rasio mereka tinggi, maka seharusnya mereka bisa lebih banyak menangani kasus yang membutuhkan rawat inap.
+
+Isi Dataset
+Dataset ini terdiri dari dua sumber data:
+
+Data ketersediaan tempat tidur rumah sakit per tahun 2020 yang diambil dari situs Yankes Kemenkes.
+Data populasi dari situs BPS yang sudah kami modifikasi sehingga hanya menampilkan data untuk tahun 2020.
+Data hasil disediakan dalam bentuk file CSV "Rasio Bed To Population Rumah Sakit Kelas C dan D tiap Provinsi Di Indonesia"
+
+Acknowledgements
+Terima kasih untuk pemerintah Indonesia yang sudah membuka data-data ini secara publik.
+
+Inspirasi
+Jika ada satu pertanyaan yang saya harap bisa terbantu terjawab melalui dataset ini, itu adalah "Bagaimana mengingkatkan rasio bed to population Indonesia?" Ini mungkin harapan yang muluk, tetapi saya berharap data yang saya tampilkan bisa memberikan gambaran provinsi-provinsi mana saja yang rasionya masih rendah. Karena dengan terlebih dulu mengetahui kelemahan kita baru bisa memperbaiki kelemahan-kelemahan itu dengan optimal.
+
+
+View less
+Usability
+8.82
+
+License
+CC0: Public Domain
+
+Expected update frequency
+Not specified
+
+Tags
+Tabular
+Social Science
+Categorical
+Healthcare
+Jumlah Penduduk Hasil Proyeksi Menurut Provinsi dan Jenis Kelamin.xlsx(9.66 kB)
+About this file
+Sumber data: Data BPS
+Data sudah dimodifikasi sehingga hanya menampilkan angka untuk tahun 2020.
+Angka dalam satuan ribu jiwa.
+
+Table
+Total Rows
+Total Columns
+Sheet1
+34
+4
+Data Explorer
+Version 2 (212.6 kB)
+
+Jumlah Penduduk Hasil Proyeksi Menurut Provinsi dan Jenis Kelamin.xlsx
+
+Sheet1
+
+Rasio Bed To Population Rumah Sakit Kelas C dan D tiap Provinsi Di Indonesia.csv
+
+data_rs.csv
+
+Summary
+3 files
+
+.csv
+
+2
+
+.xlsx
+
+1
+
+15 columns
+
+String
+
+11
+
+Decimal
+
+2
+
+Integer
+
+2
+
+See what others are saying about this dataset
+What have you used this dataset for?
+
+Learning 0
+
+Research 0
+
+Application 0
+
+LLM Fine-Tuning 0
+How would you describe this dataset?
+
+Well-documented 0
+
+Well-maintained 0
+
+Clean data 0
+
+Original 0
+
+High-quality notebooks 0
+
+Other
+Metadata
+
+Expand All
+Collaborators
+Authors
+Coverage
+DOI Citation
+Provenance
+License
+Expected Update Frequency
+Activity Overview
+Views
+7513
+date	Views
+Sep 11, 2025	4
+Sep 14, 2025	2
+Sep 15, 2025	3
+Sep 16, 2025	6
+Sep 17, 2025	4
+Sep 18, 2025	1
+Sep 19, 2025	2
+Sep 20, 2025	2
+Sep 21, 2025	1
+Sep 22, 2025	3
+Sep 23, 2025	11
+Sep 24, 2025	9
+Sep 25, 2025	3
+Sep 27, 2025	3
+Sep 28, 2025	1
+Sep 29, 2025	1
+Sep 30, 2025	2
+Oct 1, 2025	14
+Oct 2, 2025	7
+Oct 3, 2025	5
+Oct 4, 2025	5
+Oct 6, 2025	10
+Oct 7, 2025	4
+Oct 8, 2025	4
+Oct 9, 2025	10
+date	Views
+Sep 11, 2025	4
+Sep 14, 2025	2
+Sep 15, 2025	3
+Sep 16, 2025	6
+Sep 17, 2025	4
+Sep 18, 2025	1
+Sep 19, 2025	2
+Sep 20, 2025	2
+Sep 21, 2025	1
+Sep 22, 2025	3
+Sep 23, 2025	11
+Sep 24, 2025	9
+Sep 25, 2025	3
+Sep 27, 2025	3
+Sep 28, 2025	1
+Sep 29, 2025	1
+Sep 30, 2025	2
+Oct 1, 2025	14
+Oct 2, 2025	7
+Oct 3, 2025	5
+Oct 4, 2025	5
+Oct 6, 2025	10
+Oct 7, 2025	4
+Oct 8, 2025	4
+Oct 9, 2025	10
+117
+in the last 30 days
+Downloads
+1191
+date	Downloads
+Sep 11, 2025	1
+Sep 16, 2025	2
+Sep 19, 2025	2
+Sep 23, 2025	3
+Oct 1, 2025	2
+Oct 3, 2025	1
+Oct 4, 2025	2
+Oct 6, 2025	2
+Oct 7, 2025	1
+Oct 8, 2025	1
+Oct 9, 2025	1
+date	Downloads
+Sep 11, 2025	1
+Sep 16, 2025	2
+Sep 19, 2025	2
+Sep 23, 2025	3
+Oct 1, 2025	2
+Oct 3, 2025	1
+Oct 4, 2025	2
+Oct 6, 2025	2
+Oct 7, 2025	1
+Oct 8, 2025	1
+Oct 9, 2025	1
+18
+in the last 30 days
+Engagement
+0.15853
+downloads per view
+Comments
+0
+posted
+Top Contributors
+Detail View
+Views
+[object Object]
+09/15
+09/22
+09/29
+10/06
+0
+5
+10
+15
+date	Views
+Sep 11, 2025	4
+Sep 14, 2025	2
+Sep 15, 2025	3
+Sep 16, 2025	6
+Sep 17, 2025	4
+Sep 18, 2025	1
+Sep 19, 2025	2
+Sep 20, 2025	2
+Sep 21, 2025	1
+Sep 22, 2025	3
+Sep 23, 2025	11
+Sep 24, 2025	9
+Sep 25, 2025	3
+Sep 27, 2025	3
+Sep 28, 2025	1
+Sep 29, 2025	1
+Sep 30, 2025	2
+Oct 1, 2025	14
+Oct 2, 2025	7
+Oct 3, 2025	5
+Oct 4, 2025	5
+Oct 6, 2025	10
+Oct 7, 2025	4
+Oct 8, 2025	4
+Oct 9, 2025	10
+date	Views
+Sep 11, 2025	4
+Sep 14, 2025	2
+Sep 15, 2025	3
+Sep 16, 2025	6
+Sep 17, 2025	4
+Sep 18, 2025	1
+Sep 19, 2025	2
+Sep 20, 2025	2
+Sep 21, 2025	1
+Sep 22, 2025	3
+Sep 23, 2025	11
+Sep 24, 2025	9
+Sep 25, 2025	3
+Sep 27, 2025	3
+Sep 28, 2025	1
+Sep 29, 2025	1
+Sep 30, 2025	2
+Oct 1, 2025	14
+Oct 2, 2025	7
+Oct 3, 2025	5
+Oct 4, 2025	5
+Oct 6, 2025	10
+Oct 7, 2025	4
+Oct 8, 2025	4
+Oct 9, 2025	10
+Downloads
+[object Object]
+09/15
+09/22
+09/29
+10/06
+0
+1
+2
+3
+date	Downloads
+Sep 11, 2025	1
+Sep 16, 2025	2
+Sep 19, 2025	2
+Sep 23, 2025	3
+Oct 1, 2025	2
+Oct 3, 2025	1
+Oct 4, 2025	2
+Oct 6, 2025	2
+Oct 7, 2025	1
+Oct 8, 2025	1
+Oct 9, 2025	1
+date	Downloads
+Sep 11, 2025	1
+Sep 16, 2025	2
+Sep 19, 2025	2
+Sep 23, 2025	3
+Oct 1, 2025	2
+Oct 3, 2025	1
+Oct 4, 2025	2
+Oct 6, 2025	2
+Oct 7, 2025	1
+Oct 8, 2025	1
+Oct 9, 2025	1
+Related Notebooks
+
+See all
+
+Correlation Plot Bed-to-Population in Indonesia
+Updated 4 years ago
+Dataset Rasio Bed to Population Faskes II
+12
+Similar Datasets
+
+COVID 19 worldwide case
+SandhyaKrishnan02 · Updated 2 years ago
+Usability 10.0 · 14 MB · 1,299 downloads
+1 File (CSV)
+47
+
+
+COVID-19 Hospitals Treatment Plan
+Möbius · Updated 5 years ago
+Usability 10.0 · 5 MB · 1,862 downloads
+1 File (CSV)
+30
+
+
+BangkitIndonesiaKu-covid-19-updated
+JasonElian · Updated 4 years ago
+Usability 5.3 · 4 MB · 281 downloads
+274 Files (CSV, other)
+4
+
+Causes of Death in Indonesia
+Hendratno · Updated 3 years ago
+Usability 10.0 · 22 kB · 13.3K downloads
+2 Files (CSV)
+150
+
+
+
+https://www.postman.com/satusehat / di folder postman collection satu sehat api
+
+sandbox utk config gunakan generate token api postman collection diatas dari 1 sehat:
+
+Organization ID
+
+b5f0e7f5-5660-4b91-95fb-0cc21a5f735f
+
+Client ID
+
+hC1BUB8jmg97VbSGxsPyNk2k9iEjnG7woXAQq06nUxwjbvPe
+
+Client Secret
+
+
+YzlwM6Z6xWgPa4FcOs6XdemGmTQF9HzTS77ZAAp4ptQFkeGSGAeJfEhFlFUHCjsT
+
+untuk dokumentasi lengkap disini satu sehat : 
+
+https://satusehat.kemkes.go.id/platform/docs/id/playbook/
+
+
+
+// token gmaps api :
+
+GOOGLE_MAPS_API_KEY=AIzaSyBMagjD0rzJEn1n49v-5jC_OBiYeyYPdzY
+
