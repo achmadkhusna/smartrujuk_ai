@@ -20,7 +20,7 @@ MySQL Database (Container)
 
 ## 📋 Prasyarat
 
-- Pastikan sistem telah memenuhi syarat berikut:
+Pastikan sistem telah memenuhi syarat berikut:
 
 - Docker Desktop sudah terinstal dan dalam kondisi running
 
@@ -53,9 +53,9 @@ Sebelum menjalankan aplikasi dari source, buat file .env.
 => Windows (PowerShell)
 - Copy-Item .env.example .env
 
+- File .env berisi konfigurasi database dan kredensial aplikasi.
+- Tidak perlu diubah kecuali ada kebutuhan khusus.
 
-## (File .env berisi konfigurasi database dan kredensial aplikasi).
-## (Tidak perlu diubah kecuali ada kebutuhan khusus).
 
 ## ============== CARA KE-1 ===============
 
@@ -117,5 +117,6 @@ http://localhost:8501
 - Docker Hub (tanpa build ulang)
 
 - Source Code / ZIP (menggunakan Docker Compose)
+
 
 - Setup cepat, portable, dan siap dijalankan di berbagai environment
