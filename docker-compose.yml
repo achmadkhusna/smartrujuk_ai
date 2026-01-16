@@ -19,7 +19,7 @@ services:
       retries: 20
 
   app:
-    build: .
+    image: khusnafz/smartrujuk-agent:latest
     container_name: smartrujuk_app
     restart: unless-stopped
     env_file:

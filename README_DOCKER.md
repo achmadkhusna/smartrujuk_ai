@@ -1,122 +1,157 @@
-## SmartRujuk+ AI (Docker Setup) 🐳🏥
+# Smart Rujuk AI
 
-SmartRujuk+ AI adalah aplikasi berbasis Streamlit dengan database MySQL yang telah dikontainerisasi menggunakan Docker, sehingga dapat dijalankan dengan mudah tanpa konfigurasi manual environment.
+## Deskripsi Singkat
 
-## 🧱 Arsitektur Docker
+**Smart Rujuk AI** adalah aplikasi berbasis **Streamlit** yang memanfaatkan **AI** untuk membantu proses rujukan (smart referral). Aplikasi ini dirancang agar **mudah dijalankan dan direproduksi** menggunakan **Docker** dan **Docker Compose**, tanpa perlu instalasi Python, MySQL, atau dependensi lain secara manual.
 
-Project ini berjalan menggunakan 2 container Docker:
+Project ini dibuat untuk keperluan **akademik (tugas kuliah / evaluasi dosen)** dengan pendekatan **deployment-ready** seperti di industri.
 
-MySQL → Database utama
+---
 
-Streamlit → Web Application (AI Agent & Dashboard)
+## Teknologi yang Digunakan
 
-User Browser
-     │
-     ▼
-Streamlit App (Container)
-     │
-     ▼
-MySQL Database (Container)
+* **Python 3.11**
+* **Streamlit** (Web App)
+* **MySQL 8.0** (Database)
+* **SQLAlchemy** (ORM)
+* **Docker & Docker Compose**
+* **Docker Hub** (Image Registry)
 
-## 📋 Prasyarat
+---
 
-Pastikan sistem telah memenuhi syarat berikut:
+## Arsitektur Aplikasi
 
-- Docker Desktop sudah terinstal dan dalam kondisi running
+Aplikasi ini menggunakan **arsitektur multi-container**:
 
-- Browser (Chrome / Edge / Firefox)
+* **Container App**: Streamlit + AI logic
+* **Container Database**: MySQL 8.0
 
-- Tidak perlu install Python, MySQL, atau dependency lain secara manual.
+Kedua container dikelola menggunakan **docker-compose** dan berkomunikasi melalui **Docker internal network**.
 
-## 📁 Struktur File Penting
+---
 
-Pastikan file dan folder berikut berada di root project:
+## Prasyarat (Sebelum Menjalankan)
 
-- docker-compose.yml
+Pastikan di komputer Anda sudah terinstall:
 
-- Dockerfile
+1. **Docker** (Desktop / Engine)
+2. **Docker Compose** (sudah termasuk di Docker Desktop terbaru)
 
-- entrypoint.sh
+> Tidak perlu menginstall Python, MySQL, atau library lain.
 
-- requirements.txt
+---
 
-- app.py
+## Struktur File yang Digunakan
 
-- .env.example
+Struktur minimal untuk menjalankan aplikasi:
 
-- docker/mysql-init/ (berisi file .sql untuk inisialisasi database)
+```
+smart-rujuk-ai/
+├── docker-compose.yml
+└── .env
+```
 
-## ⚙️ Konfigurasi Environment (.env)
+---
 
-Sebelum menjalankan aplikasi dari source, buat file .env.
+## Konfigurasi Environment (.env)
 
-=> Windows (PowerShell)
-- Copy-Item .env.example .env
+Buat file `.env` di folder yang sama dengan `docker-compose.yml`.
 
-- File .env berisi konfigurasi database dan kredensial aplikasi.
-- Tidak perlu diubah kecuali ada kebutuhan khusus.
+Contoh **.env (versi demo akademik)**:
 
+```
+DB_NAME=smartrujuk_db
+DB_USER=root
+DB_PASSWORD=smartrujuk_demo
+```
 
-## ============== CARA KE-1 ===============
+> ⚠️ Catatan:
+>
+> * File `.env` ini **hanya untuk demo akademik**
+> * Tidak berisi credential produksi atau data sensitif
 
-🚀 Menjalankan Aplikasi (Direkomendasikan — Docker Hub)
+---
 
-## Ini adalah cara paling mudah tanpa build ulang.
+## Docker Compose Configuration
 
-- docker pull khusnafz/smartrujuk-agent-ai:latest
-- docker run -d -p 8501:8501 khusnafz/smartrujuk-agent-ai:latest
+File `docker-compose.yml` akan:
 
+* Menjalankan MySQL
+* Menunggu MySQL siap (healthcheck)
+* Menjalankan aplikasi Streamlit dari Docker Hub
 
-## Akses aplikasi melalui browser:
+Image aplikasi diambil langsung dari Docker Hub:
 
+```
+khusnafz/smartrujuk-agent:latest
+```
+
+---
+
+## Cara Menjalankan Aplikasi (Satu Perintah)
+
+Dari folder project, jalankan:
+
+```bash
+docker compose up -d
+```
+
+Docker akan otomatis:
+
+1. Mengunduh image aplikasi dari Docker Hub
+2. Menjalankan MySQL
+3. Menjalankan aplikasi Streamlit
+
+---
+
+## Mengakses Aplikasi
+
+Buka browser dan akses:
+
+```
 http://localhost:8501
+```
 
-## 🐳 Docker Image
+Jika halaman Streamlit terbuka, maka aplikasi **berjalan dengan sukses**.
 
-Docker image tersedia di Docker Hub:
+---
 
-🔗 https://hub.docker.com/r/khusnafz/smartrujuk-agent-ai
+## Menghentikan Aplikasi
 
+Untuk menghentikan aplikasi:
 
+```bash
+docker compose down
+```
 
-## ========== CARA KE-2 ==============
+Untuk menghentikan sekaligus menghapus database (fresh start):
 
-🧪 Menjalankan Aplikasi (Dari Source / File ZIP)
-1️⃣ Menjalankan Aplikasi (Pertama Kali)
+```bash
+docker compose down -v
+```
 
-## Buka terminal di folder project, lalu jalankan:
+---
 
-- docker compose up -d --build
+## Keunggulan Pendekatan Ini
 
-2️⃣ Akses Aplikasi
+* ✅ Tidak perlu setup manual environment
+* ✅ Mudah direproduksi di komputer lain
+* ✅ Konsisten antara development dan deployment
+* ✅ Mendekati standar industri
+* ✅ Cocok untuk evaluasi akademik
 
-## Buka browser dan akses:
+---
 
-http://localhost:8501
+## Catatan Akademik
 
-3️⃣ Menghentikan Aplikasi (Aman)
-- docker compose stop
+* Project ini dibuat untuk keperluan **pembelajaran dan evaluasi**
+* Konfigurasi database dan environment **bukan untuk produksi**
+* Seluruh dependency dikemas menggunakan Docker untuk kemudahan penilaian
 
-4️⃣ Menjalankan Aplikasi Kembali
-- docker compose start
+---
 
-📝 Catatan Penting
+## Penutup
 
-- Pastikan Docker Desktop berjalan
+Dengan pendekatan Docker-based deployment ini, aplikasi **Smart Rujuk AI** dapat dijalankan di berbagai environment secara konsisten hanya dengan satu perintah.
 
-- Port default aplikasi adalah 8501
-
-- Jika terjadi konflik port, ubah konfigurasi port di docker-compose.yml
-
-✅ Ringkasan
-
-- Aplikasi telah dikontainerisasi menggunakan Docker
-
-- Mendukung eksekusi melalui:
-
-- Docker Hub (tanpa build ulang)
-
-- Source Code / ZIP (menggunakan Docker Compose)
-
-
-- Setup cepat, portable, dan siap dijalankan di berbagai environment
+Terima kasih.
